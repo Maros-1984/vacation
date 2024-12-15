@@ -16,11 +16,11 @@ Scraper for Czech vacation sites
 - [ ] Data contains link to the vacation site
 - [ ] Data contains date of the scrape
 - [x] <del>Data contains travelling time</del>
-- [ ] Data contains departure time
-- [ ] Data contains comeback departure time
-- [ ] Data contains country of the vacation
-- [ ] Data contains county of the vacation
-- [ ] Data contains city of the vacation
+- [x] <del>Data contains departure time</del>
+- [x] <del>Data contains comeback departure time</del>
+- [x] <del>Data contains country of the vacation</del>
+- [x] <del>Data contains county of the vacation</del>
+- [x] <del>Data contains city of the vacation</del>
 - [ ] Data contains TripAdvisor hotel rating
 - [ ] Data contains TripAdvisor hotel rating count
 - [ ] Data contains Google hotel rating

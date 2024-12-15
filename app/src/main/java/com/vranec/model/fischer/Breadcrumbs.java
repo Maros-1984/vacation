@@ -7,8 +7,9 @@ import lombok.extern.jackson.Jacksonized;
 @Value
 @Builder
 @Jacksonized
-public class Hotel {
+public class Breadcrumbs {
 
-    String name;
-    Breadcrumbs breadcrumbs;
+    String country;
+    String destination;
+    String area;
 }

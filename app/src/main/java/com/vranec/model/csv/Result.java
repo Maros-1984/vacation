@@ -14,4 +14,7 @@ public class Result {
     int flightDurationMinutes;
     LocalTime departureTime;
     LocalTime arrivalTime;
+    String country;
+    String county;
+    String city;
 }

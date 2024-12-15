@@ -15,7 +15,8 @@ public class CsvExporter {
         var csvFormat = CSVFormat.EXCEL.builder().setAutoFlush(true).build();
 
         try (var printer = new CSVPrinter(new FileWriter("results.csv"), csvFormat)) {
-            printer.printRecord("Name", "Price (CZK)", "Departure Time", "Arrival Time", "Flight duration (min)");
+            printer.printRecord("Name", "Price (CZK)", "Departure Time", "Arrival Time", "Flight duration (min)",
+                    "Country", "County", "City");
 
             for (Result result : resultProvider.getResults()) {
                 printer.print(result.getName().trim());
@@ -23,6 +24,9 @@ public class CsvExporter {
                 printer.print(result.getDepartureTime());
                 printer.print(result.getArrivalTime());
                 printer.print(result.getFlightDurationMinutes());
+                printer.print(result.getCountry());
+                printer.print(result.getCounty());
+                printer.print(result.getCity());
 
                 printer.println();
             }

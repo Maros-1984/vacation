@@ -43,6 +43,9 @@ public class FischerDownloader implements ResultProvider {
                 .flightDurationMinutes(getFlightDurationMinutes(tour))
                 .departureTime(tour.getTour().getFlight().getDeparture().getSegments().getFirst().getDate().getFrom().toLocalTime())
                 .arrivalTime(tour.getTour().getFlight().getArrival().getSegments().getFirst().getDate().getFrom().toLocalTime())
+                .country(tour.getHotel().getBreadcrumbs().getCountry())
+                .county(tour.getHotel().getBreadcrumbs().getDestination())
+                .city(tour.getHotel().getBreadcrumbs().getArea())
                 .build();
     }
 
