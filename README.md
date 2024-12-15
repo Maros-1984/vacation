@@ -6,8 +6,10 @@ Scraper for Czech vacation sites
 
 - [ ] Scrapes vacation site
 - [ ] Filters out hotels with bad flight times
-- [ ] Downloads 1st page of hotel listing
+- [x] Downloads 1st page of hotel listing
 - [x] Read input from a JSON file
+- [ ] Downloads all pages of hotel listing
+- [ ] Downloads all hotel listings
 - [ ] Saves data to a CSV file
 - [ ] Data contains name of the hotel
 - [ ] Data contains price of the hotel
