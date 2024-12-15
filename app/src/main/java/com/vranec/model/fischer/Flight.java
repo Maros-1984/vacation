@@ -7,8 +7,8 @@ import lombok.extern.jackson.Jacksonized;
 @Value
 @Builder
 @Jacksonized
-public class InnerTour {
+public class Flight {
 
-    Price price;
-    Flight flight;
+    InnerFlight departure;
+    InnerFlight arrival;
 }

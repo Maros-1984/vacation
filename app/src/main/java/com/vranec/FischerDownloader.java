@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vranec.model.csv.Result;
 import com.vranec.model.csv.ResultProvider;
 import com.vranec.model.fischer.FisherSearchResults;
+import com.vranec.model.fischer.InnerFlight;
 import com.vranec.model.fischer.Tour;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -37,7 +38,14 @@ public class FischerDownloader implements ResultProvider {
     private Result toResult(Tour tour) {
         return Result.builder()
                 .name(tour.getHotel().getName())
-                .price(tour.getTour().getPrice().getTotal().intValue())
+                .priceCzk(tour.getTour().getPrice().getTotal().intValue())
+                .flightDurationMinutes(getFlightDurationMinutes(tour))
                 .build();
+    }
+
+    private static int getFlightDurationMinutes(Tour tour) {
+        InnerFlight departure = tour.getTour().getFlight().getDeparture();
+        InnerFlight arrival = tour.getTour().getFlight().getArrival();
+        return (departure.getDuration() + arrival.getDuration()) / 2;
     }
 }

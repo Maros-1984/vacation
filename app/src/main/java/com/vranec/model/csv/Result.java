@@ -8,5 +8,6 @@ import lombok.Value;
 public class Result {
 
     String name;
-    int price;
+    int priceCzk;
+    int flightDurationMinutes;
 }
