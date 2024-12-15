@@ -8,4 +8,5 @@ import lombok.Value;
 public class Result {
 
     String name;
+    int price;
 }

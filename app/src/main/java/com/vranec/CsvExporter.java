@@ -15,10 +15,11 @@ public class CsvExporter {
         var csvFormat = CSVFormat.EXCEL.builder().setAutoFlush(true).build();
 
         try (var printer = new CSVPrinter(new FileWriter("results.csv"), csvFormat)) {
-            printer.printRecord("Name");
+            printer.printRecord("Name", "Price");
 
             for (Result result : resultProvider.getResults()) {
                 printer.print(result.getName().trim());
+                printer.print(result.getPrice());
 
                 printer.println();
             }

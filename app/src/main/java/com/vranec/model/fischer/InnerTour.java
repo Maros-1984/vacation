@@ -7,9 +7,7 @@ import lombok.extern.jackson.Jacksonized;
 @Value
 @Builder
 @Jacksonized
-public class Tour {
+public class InnerTour {
 
-    String detailUrl;
-    Hotel hotel;
-    InnerTour tour;
+    Price price;
 }

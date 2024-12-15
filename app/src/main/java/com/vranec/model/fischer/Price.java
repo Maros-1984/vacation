@@ -4,12 +4,12 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 
+import java.math.BigDecimal;
+
 @Value
 @Builder
 @Jacksonized
-public class Tour {
+public class Price {
 
-    String detailUrl;
-    Hotel hotel;
-    InnerTour tour;
+    BigDecimal total;
 }

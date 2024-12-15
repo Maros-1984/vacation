@@ -12,7 +12,7 @@ Scraper for Czech vacation sites
 - [ ] Downloads all hotel listings
 - [x] Saves data to a CSV file
 - [x] Data contains name of the hotel
-- [ ] Data contains price of the hotel
+- [x] Data contains price of the hotel
 - [ ] Data contains link to the vacation site
 - [ ] Data contains date of the scrape
 - [ ] Data contains travelling time

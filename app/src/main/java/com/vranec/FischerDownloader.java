@@ -37,6 +37,7 @@ public class FischerDownloader implements ResultProvider {
     private Result toResult(Tour tour) {
         return Result.builder()
                 .name(tour.getHotel().getName())
+                .price(tour.getTour().getPrice().getTotal().intValue())
                 .build();
     }
 }
