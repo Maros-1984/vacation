@@ -1,21 +1,21 @@
-Name,Price (CZK),Flight duration (min)
-Virginia Family Resort,78670,175
-MITSIS FAMILY VILLAGE,83100,170
-Aldemar Olympian Village,87260,152
-Sol by Meliá Cosmopolitan,94360,175
-Atlantica Akti Zeus,103580,172
-Calypso Beach Hotel,104700,175
-D´Andrea Mare  Hotel,105990,175
-D'Andrea Mare Beach Hotel,108338,175
-Sol by Melia Cosmopolitan Rhodes (x Cosmopolitan Hotel Affiliated by Melia),108990,175
-Arminda Hotel & SPA,109400,172
-Caravia Beach,112980,170
-Porto Bello Royal,114200,170
-SENSEANA Sea Side Resort & Aquadventure,114300,172
-Rodos Princess Beach,114520,175
-Almyros Beach Resort & SPA,116120,132
-Mitsis Cretan Village,116574,172
-MITSIS FALIRAKI BEACH,118740,175
-ALDEMAR KNOSSOS ROYAL,126100,172
-MITSIS NORIDA,126560,170
-MITSIS RINELA BEACH,127600,172
+Name,Price (CZK),Departure Time,Arrival Time,Flight duration (min)
+Virginia Family Resort,78670,04:10,08:50,175
+MITSIS FAMILY VILLAGE,83100,04:50,09:20,170
+Aldemar Olympian Village,87260,04:40,09:05,152
+Sol by Meliá Cosmopolitan,94360,04:10,08:50,175
+Atlantica Akti Zeus,103580,04:55,09:30,172
+Calypso Beach Hotel,104700,04:45,09:20,175
+D´Andrea Mare  Hotel,105990,04:10,08:50,175
+D'Andrea Mare Beach Hotel,108338,04:45,22:55,175
+Sol by Melia Cosmopolitan Rhodes (x Cosmopolitan Hotel Affiliated by Melia),108990,04:45,22:55,175
+Arminda Hotel & SPA,109400,11:40,16:20,172
+Caravia Beach,112980,19:20,23:55,170
+Porto Bello Royal,114200,19:20,23:55,170
+SENSEANA Sea Side Resort & Aquadventure,114300,04:55,09:30,172
+Rodos Princess Beach,114520,11:45,16:25,175
+Almyros Beach Resort & SPA,116120,20:00,23:55,132
+Mitsis Cretan Village,116574,04:55,09:30,172
+MITSIS FALIRAKI BEACH,118740,04:10,08:50,175
+ALDEMAR KNOSSOS ROYAL,126100,04:55,09:30,172
+MITSIS NORIDA,126560,19:20,23:55,170
+MITSIS RINELA BEACH,127600,04:55,09:30,172

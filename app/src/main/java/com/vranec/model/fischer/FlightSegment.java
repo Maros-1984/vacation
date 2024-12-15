@@ -4,13 +4,10 @@ import lombok.Builder;
 import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 
-import java.util.List;
-
 @Value
 @Builder
 @Jacksonized
-public class InnerFlight {
+public class FlightSegment {
 
-    int duration;
-    List<FlightSegment> segments;
+    FlightDate date;
 }

@@ -20,6 +20,7 @@ public class FischerDownloader implements ResultProvider {
     private final String startingUrl;
 
     static {
+        OBJECT_MAPPER.findAndRegisterModules();
         OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
@@ -40,6 +41,8 @@ public class FischerDownloader implements ResultProvider {
                 .name(tour.getHotel().getName())
                 .priceCzk(tour.getTour().getPrice().getTotal().intValue())
                 .flightDurationMinutes(getFlightDurationMinutes(tour))
+                .departureTime(tour.getTour().getFlight().getDeparture().getSegments().getFirst().getDate().getFrom().toLocalTime())
+                .arrivalTime(tour.getTour().getFlight().getArrival().getSegments().getFirst().getDate().getFrom().toLocalTime())
                 .build();
     }
 
