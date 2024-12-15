@@ -1,11 +1,13 @@
 # vacation
+
 Scraper for Czech vacation sites
 
 ## To-Do List
+
 - [ ] Scrapes vacation site
 - [ ] Filters out hotels with bad flight times
 - [ ] Downloads 1st page of hotel listing
-- [ ] *** Read input from a JSON file
+- [x] Read input from a JSON file
 - [ ] Saves data to a CSV file
 - [ ] Data contains name of the hotel
 - [ ] Data contains price of the hotel

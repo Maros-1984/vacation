@@ -1,24 +1,25 @@
 package com.vranec;
 
+import lombok.Getter;
+import lombok.SneakyThrows;
+
 import java.util.List;
 import java.util.Properties;
 
+@Getter
 public class Configuration {
 
     private final List<String> listings;
 
     public Configuration() {
-        var properties = new Properties();
-
-        try {
-            properties.load(getClass().getResourceAsStream("/configuration.properties"));
-            listings = List.of(properties.getProperty("listings").split(","));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        var properties = readConfigurationProperties();
+        listings = List.of(properties.getProperty("listings").split(","));
     }
 
-    public List<String> getListings() {
-        return listings;
+    @SneakyThrows
+    private Properties readConfigurationProperties() {
+        var properties = new Properties();
+        properties.load(getClass().getResourceAsStream("/configuration.properties"));
+        return properties;
     }
 }
