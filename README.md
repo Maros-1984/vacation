@@ -10,8 +10,8 @@ Scraper for Czech vacation sites
 - [x] Read input from a JSON file
 - [ ] Downloads all pages of hotel listing
 - [ ] Downloads all hotel listings
-- [ ] Saves data to a CSV file
-- [ ] Data contains name of the hotel
+- [x] Saves data to a CSV file
+- [x] Data contains name of the hotel
 - [ ] Data contains price of the hotel
 - [ ] Data contains link to the vacation site
 - [ ] Data contains date of the scrape

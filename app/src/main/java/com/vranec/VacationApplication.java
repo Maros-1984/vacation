@@ -4,11 +4,15 @@
 package com.vranec;
 
 public class VacationApplication {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
     public static void main(String[] args) {
-        System.out.println(new VacationApplication().getGreeting());
+        new VacationApplication().exportToCsv();
+    }
+
+    public void exportToCsv() {
+        var configuration = new Configuration();
+        var fischerDownloader = new FischerDownloader(configuration.getListings().getFirst());
+        var csvExporter = new CsvExporter();
+        csvExporter.export(fischerDownloader);
     }
 }

@@ -3,15 +3,32 @@
  */
 package com.vranec;
 
+import com.github.tomakehurst.wiremock.client.WireMock;
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static org.assertj.core.api.Assertions.assertThat;
+
+@WireMockTest(httpPort = 18080)
 class VacationApplicationTest {
 
     @Test
-    void appHasAGreeting() {
-        VacationApplication classUnderTest = new VacationApplication();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
+    void exportToCsv_exportsListingsToCsv() throws Exception {
+        stubFor(get(WireMock.anyUrl())
+                .willReturn(aResponse()
+                        .withHeader("Content-Type", "application/json")
+                        .withBodyFile("fischer.json")));
+
+        new VacationApplication().exportToCsv();
+
+        String content = Files.readString(Paths.get("results.csv"));
+        String expected = Files.readString(Paths.get(getClass().getResource("/expected-results.csv").toURI()));
+        assertThat(content).isEqualTo(expected);
     }
 }

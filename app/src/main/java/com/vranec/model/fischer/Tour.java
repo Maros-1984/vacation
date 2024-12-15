@@ -1,4 +1,4 @@
-package com.vranec.model;
+package com.vranec.model.fischer;
 
 import lombok.Builder;
 import lombok.Value;
@@ -7,7 +7,8 @@ import lombok.extern.jackson.Jacksonized;
 @Value
 @Builder
 @Jacksonized
-public class Hotel {
+public class Tour {
 
-    String name;
+    String detailUrl;
+    Hotel hotel;
 }

@@ -33,6 +33,8 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:2.0.16'
     testImplementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.5.12'
 
+    implementation group: 'org.apache.commons', name: 'commons-csv', version: '1.12.0'
+
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
