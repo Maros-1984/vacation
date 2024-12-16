@@ -6,10 +6,11 @@ Scraper for Czech vacation sites
 
 - [ ] Scrapes vacation site
 - [x] <del>Filters out hotels with bad flight times</del>
+- [ ] Filters out hotels with long flights
 - [x] <del>Downloads 1st page of hotel listing</del>
 - [x] <del>Read input from a JSON file</del>
 - [x] <del>Downloads all pages of hotel listing</del>
-- [ ] Downloads all hotel listings
+- [x] <del>Downloads all hotel listings</del>
 - [x] <del>Saves data to a CSV file</del>
 - [x] <del>Data contains name of the hotel</del>
 - [x] <del>Data contains price of the hotel</del>

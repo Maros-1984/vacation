@@ -31,6 +31,6 @@ class VacationApplicationTest {
         var content = readString(Paths.get("results.csv"));
         var expectedContent = readString(Paths.get(getClass().getResource("/expected-results.csv").toURI()));
         assertThat(content).isEqualTo(expectedContent);
-        verify(5, getRequestedFor(anyUrl()));
+        verify(10, getRequestedFor(anyUrl()));
     }
 }

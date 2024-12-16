@@ -13,6 +13,8 @@ import lombok.SneakyThrows;
 import java.io.IOException;
 import java.net.URI;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,13 +29,21 @@ public class FischerDownloader implements ResultProvider {
         OBJECT_MAPPER.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
-    @SneakyThrows
     private List<Tour> getTours() {
-        var results = getResults(configuration.getListings().getFirst());
-        var pages = 1 + (results.getToursCount() - 1) / 20;
+        List<Tour> result = new ArrayList<>();
+        for (String listing : configuration.getListings()) {
+            result.addAll(getTours(listing));
+        }
+        return result;
+    }
+
+    @SneakyThrows
+    private Collection<Tour> getTours(String firstPage) {
+        var results = getResults(firstPage);
         List<Tour> result = results.getTours();
+        var pages = 1 + (results.getToursCount() - 1) / 20;
         for (int i = 2; i <= pages; i++) {
-            result.addAll(getResults(configuration.getListings().getFirst() + "&pitg=" + i * 20).getTours());
+            result.addAll(getResults(firstPage + "&pitg=" + i * 20).getTours());
         }
         return result;
     }
