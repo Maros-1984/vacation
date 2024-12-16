@@ -13,16 +13,15 @@ Scraper for Czech vacation sites
 - [x] <del>Saves data to a CSV file</del>
 - [x] <del>Data contains name of the hotel</del>
 - [x] <del>Data contains price of the hotel</del>
-- [ ] Data contains link to the vacation site
-- [ ] Data contains date of the scrape
+- [x] <del>Data contains link to the vacation site</del>
 - [x] <del>Data contains travelling time</del>
 - [x] <del>Data contains departure time</del>
 - [x] <del>Data contains comeback departure time</del>
 - [x] <del>Data contains country of the vacation</del>
 - [x] <del>Data contains county of the vacation</del>
 - [x] <del>Data contains city of the vacation</del>
-- [ ] Data contains TripAdvisor hotel rating
-- [ ] Data contains TripAdvisor hotel rating count
+- [x] <del>Data contains TripAdvisor hotel rating</del>
+- [x] <del>Data contains TripAdvisor hotel rating count</del>
 - [ ] Data contains Google hotel rating
 - [ ] Data contains Google hotel rating count
 - [ ] Data contains Booking.com hotel rating

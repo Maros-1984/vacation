@@ -20,4 +20,5 @@ public class Result {
     String country;
     String county;
     String city;
+    String link;
 }

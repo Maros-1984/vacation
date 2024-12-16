@@ -9,7 +9,7 @@ import java.util.List;
 @Value
 @Builder
 @Jacksonized
-public class FisherSearchResults {
+public class FischerSearchResults {
 
     List<Tour> tours;
 }

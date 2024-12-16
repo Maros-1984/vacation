@@ -17,7 +17,7 @@ public class CsvExporter {
 
         try (var printer = new CSVPrinter(new FileWriter("results.csv"), csvFormat)) {
             printer.printRecord("Name", "Price (CZK)", "TripAdvisor Rating", "TripAdvisor Review Count", "Departure Time", "Arrival Time",
-                    "Flight duration (min)", "Country", "County", "City");
+                    "Flight duration (min)", "Country", "County", "City", "Link");
 
             for (Result result : resultProvider.getResults()) {
                 printer.print(result.getName().trim());
@@ -30,6 +30,7 @@ public class CsvExporter {
                 printer.print(result.getCountry());
                 printer.print(result.getCounty());
                 printer.print(result.getCity());
+                printer.print(result.getLink());
 
                 printer.println();
             }

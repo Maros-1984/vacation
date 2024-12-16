@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vranec.model.csv.Result;
 import com.vranec.model.csv.ResultProvider;
-import com.vranec.model.fischer.FisherSearchResults;
+import com.vranec.model.fischer.FischerSearchResults;
 import com.vranec.model.fischer.InnerFlight;
 import com.vranec.model.fischer.Tour;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,7 @@ public class FischerDownloader implements ResultProvider {
 
     @SneakyThrows
     public List<Tour> getTours() {
-        return OBJECT_MAPPER.readValue(URI.create(startingUrl).toURL(), FisherSearchResults.class).getTours();
+        return OBJECT_MAPPER.readValue(URI.create(startingUrl).toURL(), FischerSearchResults.class).getTours();
     }
 
     @Override
@@ -48,6 +48,7 @@ public class FischerDownloader implements ResultProvider {
                 .country(tour.getHotel().getBreadcrumbs().getCountry())
                 .county(tour.getHotel().getBreadcrumbs().getDestination())
                 .city(tour.getHotel().getBreadcrumbs().getArea())
+                .link("https://www.fischer.cz" + tour.getDetailUrl())
                 .build();
     }
 
