@@ -59,6 +59,7 @@ public class FischerDownloader implements ResultProvider {
                 .country(tour.getHotel().getBreadcrumbs().getCountry())
                 .county(tour.getHotel().getBreadcrumbs().getDestination())
                 .city(tour.getHotel().getBreadcrumbs().getArea())
+                .hasTobogan(tour.getHotel().getTags().contains("Skluzavky a tobogány"))
                 .link("https://www.fischer.cz" + tour.getDetailUrl())
                 .build();
     }

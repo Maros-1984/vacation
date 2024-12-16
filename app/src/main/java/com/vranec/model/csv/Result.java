@@ -28,6 +28,7 @@ public class Result implements Comparable<Result> {
     String country;
     String county;
     String city;
+    boolean hasTobogan;
     String link;
 
     @Override

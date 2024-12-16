@@ -31,5 +31,5 @@ Scraper for Czech vacation sites
 - [ ] Data contains TripAdvisor link
 - [ ] Data contains Google Maps link
 - [ ] Data contains whether the hotel is all-inclusive
-- [ ] Data contains whether the hotel has tobogan
+- [ ] <del>Data contains whether the hotel has tobogan</del>
 - [ ] Data contains whether there is a flight from Kosice
