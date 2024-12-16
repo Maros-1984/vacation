@@ -12,13 +12,15 @@ import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URI;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 public class FischerDownloader implements ResultProvider {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    private final String startingUrl;
+    private final Configuration configuration;
 
     static {
         OBJECT_MAPPER.findAndRegisterModules();
@@ -27,11 +29,11 @@ public class FischerDownloader implements ResultProvider {
 
     @SneakyThrows
     private List<Tour> getTours() {
-        var results = getResults(startingUrl);
+        var results = getResults(configuration.getListings().getFirst());
         var pages = 1 + (results.getToursCount() - 1) / 20;
         List<Tour> result = results.getTours();
         for (int i = 2; i <= pages; i++) {
-            result.addAll(getResults(startingUrl + "&pitg=" + i * 20).getTours());
+            result.addAll(getResults(configuration.getListings().getFirst() + "&pitg=" + i * 20).getTours());
         }
         return result;
     }
@@ -44,24 +46,34 @@ public class FischerDownloader implements ResultProvider {
     public List<Result> getResults() {
         return getTours().stream()
                 .map(this::toResult)
+                .filter(Objects::nonNull)
                 .toList();
     }
 
     private Result toResult(Tour tour) {
+        LocalTime departureTime = tour.getTour().getFlight().getDeparture().getSegments().getFirst().getDate().getFrom().toLocalTime();
+        LocalTime arrivalTime = tour.getTour().getFlight().getArrival().getSegments().getFirst().getDate().getFrom().toLocalTime();
+        if (isNotValid(departureTime) || isNotValid(arrivalTime)) {
+            return null;
+        }
         return Result.builder()
                 .name(tour.getHotel().getName())
                 .priceCzk(tour.getTour().getPrice().getTotal().intValue())
                 .tripAdvisorRating(tour.getHotel().getReview().getTripAdvisor().getResult())
                 .tripAdvisorReviewCount(tour.getHotel().getReview().getTripAdvisor().getReviewersCount())
                 .flightDurationMinutes(getFlightDurationMinutes(tour))
-                .departureTime(tour.getTour().getFlight().getDeparture().getSegments().getFirst().getDate().getFrom().toLocalTime())
-                .arrivalTime(tour.getTour().getFlight().getArrival().getSegments().getFirst().getDate().getFrom().toLocalTime())
+                .departureTime(departureTime)
+                .arrivalTime(arrivalTime)
                 .country(tour.getHotel().getBreadcrumbs().getCountry())
                 .county(tour.getHotel().getBreadcrumbs().getDestination())
                 .city(tour.getHotel().getBreadcrumbs().getArea())
                 .hasTobogan(tour.getHotel().getTags().contains("Skluzavky a tobogány"))
                 .link("https://www.fischer.cz" + tour.getDetailUrl())
                 .build();
+    }
+
+    private boolean isNotValid(LocalTime time) {
+        return time.isBefore(configuration.getMinDepartureTime()) || time.isAfter(configuration.getMaxDepartureTime());
     }
 
     private static int getFlightDurationMinutes(Tour tour) {

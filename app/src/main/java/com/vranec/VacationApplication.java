@@ -11,7 +11,7 @@ public class VacationApplication {
 
     public void exportToCsv() {
         var configuration = new Configuration();
-        var fischerDownloader = new FischerDownloader(configuration.getListings().getFirst());
+        var fischerDownloader = new FischerDownloader(configuration);
         var csvExporter = new CsvExporter();
         csvExporter.export(fischerDownloader);
     }

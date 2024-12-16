@@ -5,7 +5,7 @@ Scraper for Czech vacation sites
 ## To-Do List
 
 - [ ] Scrapes vacation site
-- [ ] Filters out hotels with bad flight times
+- [x] <del>Filters out hotels with bad flight times</del>
 - [x] <del>Downloads 1st page of hotel listing</del>
 - [x] <del>Read input from a JSON file</del>
 - [x] <del>Downloads all pages of hotel listing</del>
