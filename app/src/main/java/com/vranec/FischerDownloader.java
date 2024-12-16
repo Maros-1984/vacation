@@ -40,6 +40,8 @@ public class FischerDownloader implements ResultProvider {
         return Result.builder()
                 .name(tour.getHotel().getName())
                 .priceCzk(tour.getTour().getPrice().getTotal().intValue())
+                .tripAdvisorRating(tour.getHotel().getReview().getTripAdvisor().getResult())
+                .tripAdvisorReviewCount(tour.getHotel().getReview().getTripAdvisor().getReviewersCount())
                 .flightDurationMinutes(getFlightDurationMinutes(tour))
                 .departureTime(tour.getTour().getFlight().getDeparture().getSegments().getFirst().getDate().getFrom().toLocalTime())
                 .arrivalTime(tour.getTour().getFlight().getArrival().getSegments().getFirst().getDate().getFrom().toLocalTime())

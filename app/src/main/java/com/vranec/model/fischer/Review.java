@@ -7,9 +7,7 @@ import lombok.extern.jackson.Jacksonized;
 @Value
 @Builder
 @Jacksonized
-public class Hotel {
+public class Review {
 
-    String name;
-    Breadcrumbs breadcrumbs;
-    Review review;
+    TripAdvisor tripAdvisor;
 }
