@@ -9,6 +9,7 @@ import com.vranec.model.fischer.InnerFlight;
 import com.vranec.model.fischer.Tour;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.URI;
@@ -18,6 +19,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
+@Slf4j
 @RequiredArgsConstructor
 public class FischerDownloader implements ResultProvider {
 
@@ -61,17 +63,24 @@ public class FischerDownloader implements ResultProvider {
     }
 
     private Result toResult(Tour tour) {
-        LocalTime departureTime = tour.getTour().getFlight().getDeparture().getSegments().getFirst().getDate().getFrom().toLocalTime();
-        LocalTime arrivalTime = tour.getTour().getFlight().getArrival().getSegments().getFirst().getDate().getFrom().toLocalTime();
+        var departureTime = tour.getTour().getFlight().getDeparture().getSegments().getFirst().getDate().getFrom().toLocalTime();
+        var arrivalTime = tour.getTour().getFlight().getArrival().getSegments().getFirst().getDate().getFrom().toLocalTime();
+        var name = tour.getHotel().getName();
         if (isNotValid(departureTime) || isNotValid(arrivalTime)) {
+            log.info("Skipping {} tour with invalid departure or arrival time.", name);
+            return null;
+        }
+        int flightDurationMinutes = getFlightDurationMinutes(tour);
+        if (isNotValid(flightDurationMinutes)) {
+            log.info("Skipping {} tour with invalid flight duration.", name);
             return null;
         }
         return Result.builder()
-                .name(tour.getHotel().getName())
+                .name(name)
                 .priceCzk(tour.getTour().getPrice().getTotal().intValue())
                 .tripAdvisorRating(tour.getHotel().getReview().getTripAdvisor().getResult())
                 .tripAdvisorReviewCount(tour.getHotel().getReview().getTripAdvisor().getReviewersCount())
-                .flightDurationMinutes(getFlightDurationMinutes(tour))
+                .flightDurationMinutes(flightDurationMinutes)
                 .departureTime(departureTime)
                 .arrivalTime(arrivalTime)
                 .country(tour.getHotel().getBreadcrumbs().getCountry())
@@ -80,6 +89,10 @@ public class FischerDownloader implements ResultProvider {
                 .hasTobogan(tour.getHotel().getTags().contains("Skluzavky a tobogány"))
                 .link("https://www.fischer.cz" + tour.getDetailUrl())
                 .build();
+    }
+
+    private boolean isNotValid(int flightDurationMinutes) {
+        return flightDurationMinutes > configuration.getMaxFlightDurationMinutes();
     }
 
     private boolean isNotValid(LocalTime time) {
