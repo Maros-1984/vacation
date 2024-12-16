@@ -10,6 +10,7 @@ import com.vranec.model.fischer.Tour;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
 
@@ -25,8 +26,18 @@ public class FischerDownloader implements ResultProvider {
     }
 
     @SneakyThrows
-    public List<Tour> getTours() {
-        return OBJECT_MAPPER.readValue(URI.create(startingUrl).toURL(), FischerSearchResults.class).getTours();
+    private List<Tour> getTours() {
+        var results = getResults(startingUrl);
+        var pages = 1 + (results.getToursCount() - 1) / 20;
+        List<Tour> result = results.getTours();
+        for (int i = 2; i <= pages; i++) {
+            result.addAll(getResults(startingUrl + "&pitg=" + i * 20).getTours());
+        }
+        return result;
+    }
+
+    private static FischerSearchResults getResults(String url) throws IOException {
+        return OBJECT_MAPPER.readValue(URI.create(url).toURL(), FischerSearchResults.class);
     }
 
     @Override

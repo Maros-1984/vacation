@@ -12,4 +12,5 @@ import java.util.List;
 public class FischerSearchResults {
 
     List<Tour> tours;
+    int toursCount;
 }

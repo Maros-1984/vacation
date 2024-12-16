@@ -19,7 +19,7 @@ public class CsvExporter {
             printer.printRecord("Name", "Price (CZK)", "TripAdvisor Rating", "TripAdvisor Review Count", "Departure Time", "Arrival Time",
                     "Flight duration (min)", "Country", "County", "City", "Link");
 
-            for (Result result : resultProvider.getResults()) {
+            for (Result result : resultProvider.getUniqueSortedResults()) {
                 printer.print(result.getName().trim());
                 printer.print(result.getPriceCzk());
                 printer.print(result.getTripAdvisorRating().setScale(2, RoundingMode.HALF_UP));

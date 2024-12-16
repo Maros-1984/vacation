@@ -8,7 +8,7 @@ Scraper for Czech vacation sites
 - [ ] Filters out hotels with bad flight times
 - [x] <del>Downloads 1st page of hotel listing</del>
 - [x] <del>Read input from a JSON file</del>
-- [ ] Downloads all pages of hotel listing
+- [x] <del>Downloads all pages of hotel listing</del>
 - [ ] Downloads all hotel listings
 - [x] <del>Saves data to a CSV file</del>
 - [x] <del>Data contains name of the hotel</del>
@@ -30,6 +30,6 @@ Scraper for Czech vacation sites
 - [ ] Data contains Booking.com link
 - [ ] Data contains TripAdvisor link
 - [ ] Data contains Google Maps link
-- [ ] Data contains whether the hotel is all inclusive
-- [ ] Data contains whether the hotel has toboogan
+- [ ] Data contains whether the hotel is all-inclusive
+- [ ] Data contains whether the hotel has tobogan
 - [ ] Data contains whether there is a flight from Kosice
