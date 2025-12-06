@@ -13,7 +13,7 @@ public class CsvExporter {
 
     @SneakyThrows
     public void export(ResultProvider resultProvider) {
-        var csvFormat = CSVFormat.EXCEL.builder().setAutoFlush(true).build();
+        var csvFormat = CSVFormat.EXCEL.builder().setAutoFlush(true).get();
 
         try (var printer = new CSVPrinter(new FileWriter("results.csv"), csvFormat)) {
             printer.printRecord("Name", "Price (CZK)", "TripAdvisor Rating", "TripAdvisor Review Count", "Departure Time", "Arrival Time",

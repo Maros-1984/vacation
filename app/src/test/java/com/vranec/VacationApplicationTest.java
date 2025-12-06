@@ -15,6 +15,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static java.nio.file.Files.readString;
+import static java.util.Objects.requireNonNull;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @WireMockTest(httpPort = 18080)
@@ -29,7 +30,8 @@ class VacationApplicationTest {
         new VacationApplication().exportToCsv();
 
         var content = readString(Paths.get("results.csv"));
-        var expectedContent = readString(Paths.get(getClass().getResource("/expected-results.csv").toURI()));
+        var path = Paths.get(requireNonNull(getClass().getResource("/expected-results.csv")).toURI());
+        var expectedContent = readString(path);
         assertThat(content).isEqualTo(expectedContent);
         verify(10, getRequestedFor(anyUrl()));
     }

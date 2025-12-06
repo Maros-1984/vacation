@@ -51,7 +51,9 @@ public class FischerDownloader implements ResultProvider {
     }
 
     private static FischerSearchResults getResults(String url) throws IOException {
-        return OBJECT_MAPPER.readValue(URI.create(url).toURL(), FischerSearchResults.class);
+        try (var inputStream = URI.create(url).toURL().openStream()) {
+            return OBJECT_MAPPER.readValue(inputStream, FischerSearchResults.class);
+        }
     }
 
     @Override

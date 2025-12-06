@@ -5,7 +5,7 @@ package com.vranec;
 
 public class VacationApplication {
 
-    public static void main(String[] args) {
+    static void main() {
         new VacationApplication().exportToCsv();
     }
 

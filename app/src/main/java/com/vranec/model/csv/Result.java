@@ -2,6 +2,7 @@ package com.vranec.model.csv;
 
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
+import lombok.NonNull;
 import lombok.Value;
 
 import java.math.BigDecimal;
@@ -32,7 +33,7 @@ public class Result implements Comparable<Result> {
     String link;
 
     @Override
-    public int compareTo(Result other) {
+    public int compareTo(@NonNull Result other) {
         return COMPARATOR.compare(this, other);
     }
 }
