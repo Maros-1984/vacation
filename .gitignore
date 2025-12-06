@@ -32,3 +32,4 @@ build
 .idea
 *.iml
 app/results.csv
+/results.csv

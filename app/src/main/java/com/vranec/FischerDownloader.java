@@ -77,6 +77,7 @@ public class FischerDownloader implements ResultProvider {
             log.info("Skipping {} tour with invalid flight duration.", name);
             return null;
         }
+        var tags = tour.getHotel().getTags();
         return Result.builder()
                 .name(name)
                 .priceCzk(tour.getTour().getPrice().getTotal().intValue())
@@ -88,7 +89,7 @@ public class FischerDownloader implements ResultProvider {
                 .country(tour.getHotel().getBreadcrumbs().getCountry())
                 .county(tour.getHotel().getBreadcrumbs().getDestination())
                 .city(tour.getHotel().getBreadcrumbs().getArea())
-                .hasTobogan(tour.getHotel().getTags().contains("Skluzavky a tobogány"))
+                .hasTobogan(tags.contains("Skluzavky a tobogány") || tags.contains("Aquapark v hotelu"))
                 .link("https://www.fischer.cz" + tour.getDetailUrl())
                 .build();
     }

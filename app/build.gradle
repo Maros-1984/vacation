@@ -27,6 +27,7 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.42'
 
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.20.1'
+    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.20.1"
 
     testImplementation group: 'org.wiremock', name: 'wiremock', version: '3.13.2'
 
