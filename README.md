@@ -4,7 +4,7 @@ Scraper for Czech vacation sites
 
 ## To-Do List
 
-- [ ] Scrapes vacation site
+- [x] <del>Scrapes vacation site</del>
 - [x] <del>Filters out hotels with bad flight times</del>
 - [x] <del>Filters out hotels with long flights</del>
 - [x] <del>Downloads 1st page of hotel listing</del>
