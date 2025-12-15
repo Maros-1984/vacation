@@ -8519,6 +8519,7 @@
           "Vzdálenost k pláži 150 m",
           "Lehátka a slunečníky u bazénu zdarma",
           "Služby delegáta",
+          "Aquapark v hotelu",
           "Wellness & Spa"
         ],
         "badgeIds": [],
@@ -10093,8 +10094,8 @@
                   "toId": 0
                 },
                 "date": {
-                  "from": "2025-07-29T19:20",
-                  "to": "2025-07-29T23:05"
+                  "from": "2025-07-29T13:20",
+                  "to": "2025-07-29T15:05"
                 },
                 "airlineName": "Smartwings",
                 "flightNumber": "QS2252",
@@ -10120,8 +10121,8 @@
                   "toId": 0
                 },
                 "date": {
-                  "from": "2025-08-05T23:55",
-                  "to": "2025-08-06T01:50"
+                  "from": "2025-08-05T15:55",
+                  "to": "2025-08-06T17:50"
                 },
                 "airlineName": "Smartwings",
                 "flightNumber": "QS2253",

@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.URI;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -41,11 +42,30 @@ public class FischerDownloader implements ResultProvider {
 
     @SneakyThrows
     private Collection<Tour> getTours(String firstPage) {
-        var results = getResults(firstPage);
-        List<Tour> result = results.getTours();
-        var pages = 1 + (results.getToursCount() - 1) / 20;
-        for (int i = 2; i <= pages; i++) {
-            result.addAll(getResults(firstPage + "&pitg=" + i * 20).getTours());
+        var ddIndex = firstPage.indexOf("dd=") + 3;
+        var firstDateString = firstPage.substring(ddIndex, ddIndex + 10);
+        var firstDate = LocalDate.parse(firstDateString);
+        var rdIndex = firstPage.indexOf("rd=") + 3;
+        var endDateStr = firstPage.substring(rdIndex, rdIndex + 10);
+        var endDate = firstDate.plusDays(8);
+        firstPage = firstPage.replace(endDateStr, endDate.toString());
+
+        List<Tour> result = new ArrayList<>();
+        for (int day = 0; day <= 8; day++) {
+            var oldFirstDate = firstDate;
+            var oldEndDate = endDate;
+            firstDate = firstDate.plusDays(1);
+            endDate = endDate.plusDays(1);
+            firstPage = firstPage.replace(oldFirstDate.toString(), firstDate.toString());
+            firstPage = firstPage.replace(oldEndDate.toString(), endDate.toString());
+
+            var results = getResults(firstPage);
+            result.addAll(results.getTours());
+            var pages = 1 + (results.getToursCount() - 1) / 20;
+            for (int i = 2; i <= pages; i++) {
+                result.addAll(getResults(firstPage + "&pitg=" + i * 20).getTours());
+                log.info("results so far: " + result.size());
+            }
         }
         return result;
     }

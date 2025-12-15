@@ -13,6 +13,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.anyUrl;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
+import static com.github.tomakehurst.wiremock.client.WireMock.urlMatching;
 import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static java.nio.file.Files.readString;
 import static java.util.Objects.requireNonNull;
@@ -26,6 +27,9 @@ class VacationApplicationTest {
         stubFor(get(anyUrl()).willReturn(aResponse()
                 .withHeader("Content-Type", "application/json")
                 .withBodyFile("fischer.json")));
+        stubFor(get(urlMatching(".*&dd=2025-07-19.*")).willReturn(aResponse()
+                .withHeader("Content-Type", "application/json")
+                .withBodyFile("fischer-with-bello-possible.json")));
 
         new VacationApplication().exportToCsv();
 
@@ -33,6 +37,6 @@ class VacationApplicationTest {
         var path = Paths.get(requireNonNull(getClass().getResource("/expected-results.csv")).toURI());
         var expectedContent = readString(path);
         assertThat(content).isEqualTo(expectedContent);
-        verify(10, getRequestedFor(anyUrl()));
+        verify(90, getRequestedFor(anyUrl()));
     }
 }
